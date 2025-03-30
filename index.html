@@ -6,13 +6,66 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed"></script>
-    <title>Interactive Altair Chart</title>
+    <title>DSCI 320</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .chart-container {
+            flex: 1;
+        }
+        .text-container {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-    <h1>My Interactive Chart</h1>
-    <div id="vis"></div>
+    <h1>Team Value</h1>
+    
+    <h2>Gurmandeep Bal</h2>
+    
+    <section>
+        <p>The research goal of this visualization is to answer: does a game higher with the existence of a certain category? This visualization shows that there does seem to be a difference in score when certain categories exist. Notice that the area under the single-player line, Multiplayer line, and Co-op line seem to be larger on the right-side end of the graph where the higher rated game is compared to the center of the graph where mediocre games exist.</p>
+        <p>I have chosen a line graph to show the trends of the review scores as we progress from lower end games to higher end ones. This is compared to the Total count of all the total reviews that exist for each score point. The color channel is based on the Category type. The Bar chart and Pie chart help supplement this view by showing the total number of categories which exist as there could be an overrepresentation bias. There does seem like there is way more single player games than any other category, however, the rest of the categories share equal space. There are two interactions that exist here, first is that we can click and select any category to show just color just for that category. Second is that our dropdown allows us to have a blown-up view of a particular category on the line graph.</p>
+        <p>This view could be made better by having a reset button to return a chosen dropdown state to the original view. The line graph also has a large exasperation at score = 0 due to the sheer number of games that have been rated at this score. One solution would be to just ignore this as the difference between a 1 game and 0 game is negligible and perhaps have a different graph comparing that point for each category separately while cleaning up the main view of the line chart.</p>
+        <div id="gur1"></div>
+    </section>
+    
+    <section class="content-wrapper">
+        <div class="text-container">
+            <p>The research goal of this visualization is to answer: In general, do games with more achievements have more categories associated with them? And are games with more achievements good games? This visualization shows that there does seem to be a difference where higher-rated games tend to lean towards having more categories than the lower-ranked games. This is noticed by how the area of the top-rated games has a sizable shift towards the higher end of the x-axis compared to the lower-rated games chart.</p>
+            <p>I have chosen area graphs to represent the number of categories on the x-axis vs the total amount of achievements on the y-axis. I have done this since there is so much data, other marks could become too cluttered and confusing. The color mark is then used to show how much each area belongs to a certain rating of games. This allows us to see the trends of how high-rated games tend to behave given these two variables. To take a closer look at each individual score, another chart was added to show the same data but for one score rating at a time, which can be controlled by a slider. Essentially the top graphs can show us a holistic view while the bottom one can help see a more precise look to help us answer the question.</p>
+            <p>This view could be made better by having perhaps lines which also show where the Metacritic score falls onto this data and see if any comparisons can be made from that. Also, perhaps instead of stacked area charts, maybe if they were faceted instead it would make the visualization look a bit cleaner.</p>
+        </div>
+        <div class="chart-container">
+            <div id="gur2"></div>
+        </div>
+    </section>
+    
+    <section class="content-wrapper">
+        <div class="chart-container">
+            <div id="gur3"></div>
+        </div>
+        <div class="text-container">
+            <p>The research goal of this visualization is to answer: Does a game which has more categories associated with it do better than ones who meet few categories? This visualization shows that there does seem to be a difference as the higher-rated games tend to contain more categories than the lower-rated ones. This is noticed by how the density of the top-rated games has a much longer tail to the higher counts of categories than the lower-rated ones.</p>
+            <p>I have chosen density graphs as since I am using most of the large dataset, this would be an excellent way to showcase large data in an interpretable way. The density is comprised of the count of categories that each game has based on the count again for the x-axis. Then to show how the scores compare to the counts, a bar chart with radio buttons will show the trend of the scores in the data. This graph shows that good games tend to have a large range of how many categories they tend to have. The pie chart shows how many games have a particular number of categories, which allows us to see if there is any data significance to take into consideration. The bar chart and the pie chart are using this color theme since it allows us to more easily distinguish between sections while also showing ordinal progression.</p>
+            <p>This view could be made better by having a different view for the pie chart since some of the slices are very thin and are not as visible. There could also be more interactivity where we could be able to control the size of the data for the density to see how sample size affects this finding.</p>
+        </div>
+    </section>
+    
     <script>
-        vegaEmbed("#vis", "project-team_valve-main/report/gur1.json").then(function(result) {
+        vegaEmbed("#gur1", "project-team_valve-main/report/gur1.json").then(function(result) {
+            console.log("Chart Loaded");
+        }).catch(console.error);
+
+        vegaEmbed("#gur2", "project-team_valve-main/report/gur2.json").then(function(result) {
+            console.log("Chart Loaded");
+        }).catch(console.error);
+
+        vegaEmbed("#gur3", "project-team_valve-main/report/gur3.json").then(function(result) {
             console.log("Chart Loaded");
         }).catch(console.error);
     </script>

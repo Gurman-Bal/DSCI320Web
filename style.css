@@ -1,0 +1,32 @@
+/* Center the chart */
+#vis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* Style the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+/* Title styling */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Add a border and shadow to the chart */
+.vega-embed {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background: white;
+}
